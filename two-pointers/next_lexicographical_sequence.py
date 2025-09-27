@@ -43,5 +43,5 @@ def next_lexicographical_sequence(s: str) -> str:
 
 if __name__ == "__main__":
     s = "abcedda"
-
-    next_lexicographical_sequence(s)
+    
+    next_lexicographical_sequence(s) # result is "abdacde"
