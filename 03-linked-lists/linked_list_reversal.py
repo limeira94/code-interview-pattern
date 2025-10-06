@@ -54,14 +54,31 @@ def create_linked_list(items: List[int]) -> Optional[ListNode]:
     return head
 
 
-# Helper function to convert a linked list back to a Python list for easy printing
-def linked_list_to_list(head: Optional[ListNode]) -> List[int]:
-    items = []
-    current = head
-    while current:
-        items.append(current.val)
-        current = current.next
-    return items
+"""
+Intuition - Recursive
+    In a recursive solution, the problem is solved by solving smaller
+instances of the same problem.
+
+1.  new_head = 2 -> 4 -> 7 -> 3 -> None
+
+
+2.  new_head = 4 -> 7 -> 3 -> None,
+
+3.  new_head = 7 -> 3 -> None
+    
+4.  new_head = 3 -> None,
+    
+5.  head = 7 -> 3 -> None
+"""
+
+
+def linked_list_reversal_recursive(head: ListNode) -> ListNode:
+    if (not head) or (not head.next):
+        return head
+    new_head = linked_list_reversal_recursive(head.next)
+    head.next.next = head
+    head.next = None
+    return new_head
 
 
 if __name__ == "__main__":
@@ -69,6 +86,8 @@ if __name__ == "__main__":
 
     original_head = create_linked_list(my_list)
 
-    reversed_head = linked_list_reversal(original_head)
+    # reversed_head = linked_list_reversal(original_head)
 
-    print(reversed_head)
+    reversed_head_recursive = linked_list_reversal_recursive(original_head)
+
+    print(reversed_head_recursive)
