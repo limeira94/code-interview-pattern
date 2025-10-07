@@ -30,6 +30,16 @@ class ListNode:
         nodes.append("None")
         return " -> ".join(nodes)
 
+# Helper function to create a linked list from a Python list
+def create_linked_list(items: List[int]) -> Optional[ListNode]:
+    if not items:
+        return None
+    head = ListNode(items[0])
+    current = head
+    for item in items[1:]:
+        current.next = ListNode(item)
+        current = current.next
+    return head
 
 def linked_list_reversal(head: ListNode) -> ListNode:
     curr_node, prev_node = head, None
@@ -42,16 +52,7 @@ def linked_list_reversal(head: ListNode) -> ListNode:
     return prev_node
 
 
-# Helper function to create a linked list from a Python list
-def create_linked_list(items: List[int]) -> Optional[ListNode]:
-    if not items:
-        return None
-    head = ListNode(items[0])
-    current = head
-    for item in items[1:]:
-        current.next = ListNode(item)
-        current = current.next
-    return head
+
 
 
 """
